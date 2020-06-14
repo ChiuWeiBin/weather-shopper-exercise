@@ -1,0 +1,4 @@
+{
+  "watchForFileChanges": false,
+  "baseUrl": "http://weathershopper.pythonanywhere.com/"
+}

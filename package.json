@@ -1,0 +1,22 @@
+{
+  "name": "weather-shopper-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
+    "cypress": "^4.7.0",
+    "eslint-plugin-chai-friendly": "^0.6.0",
+    "eslint-plugin-cypress": "^2.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "ChiuWeiBin",
+  "license": "ISC"
+}
