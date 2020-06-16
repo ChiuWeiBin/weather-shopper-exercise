@@ -18,6 +18,7 @@ Cypress.Commands.add(
   "getminimumPriceFor",
   (includesWord1 = true, includesWord2 = true) => {
     var minPrice1 = 99999;
+
     cy.log("command start here************");
     selectItemPage.getAllProductName().each((el, index, list) => {
       const text = el.text();
@@ -40,12 +41,17 @@ Cypress.Commands.add(
             // cy.contains(minPrice1).next().click();
             cy.contains(minPrice1).as("Price"); //for assertion , future use
           });
+
         //cy.log("minimum price 1111 " + minPrice1);
       }
     });
     cy.get("@MinPriceAddBtn").click();
   }
 );
+
+Cypress.Commands.add("getMinPriceInTxt", () => {
+  cy.get("@Price").invoke("text").as("minPriceWithCurrency");
+});
 
 // -- This is a parent command --
 
