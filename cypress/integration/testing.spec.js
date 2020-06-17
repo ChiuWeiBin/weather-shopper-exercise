@@ -1,4 +1,5 @@
 ///<reference types="Cypress"/>
+///<reference types="cypress-iframe" />
 
 import "@testing-library/cypress/add-commands";
 import SelectItemPage from "./PageObject/SelectItemPage.spec";
@@ -48,6 +49,20 @@ describe("weather shopper", () => {
         cy.get("@total").should("equal", totalString);
       });
 
-    cy.findByText("Pay with Card").click().wait(5000); //iframe
+    cy.findByText("Pay with Card").click().wait(1000); //iframe
+    cy.frameLoaded(".stripe_checkout_app");
+    cy.iframe().find("[type='email']").type("gdsfjh@jdhjffdg.dfg");
+    cy.iframe().find("[placeholder='Card number']").type("4242 4242 4242 4242");
+    cy.iframe().find("[placeholder='MM / YY']").type("0521");
+    cy.iframe().find("[placeholder='CVC']").type("123");
+    cy.iframe().find("[placeholder='ZIP Code']").type("45646");
+    cy.iframe().find("button").click();
+
+    cy.wait(500);
+    cy.get("h2").should("include.text", "PAYMENT SUCCESS");
+    cy.get("p.text-justify").should(
+      "include.text",
+      "Your payment was successful. You should receive a follow-up call from our sales team."
+    );
   });
 });

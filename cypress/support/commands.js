@@ -10,6 +10,7 @@
 //
 //
 //import SelectItemPage from "./PageObject/SelectItemPage.spec";
+import "cypress-iframe";
 import SelectItemPage from "../integration/PageObject/SelectItemPage.spec";
 
 const selectItemPage = new SelectItemPage();
