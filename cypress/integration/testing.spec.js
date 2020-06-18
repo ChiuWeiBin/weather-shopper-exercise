@@ -3,6 +3,7 @@
 
 import "@testing-library/cypress/add-commands";
 import SelectItemPage from "./PageObject/SelectItemPage.spec";
+var faker = require("faker");
 
 describe("weather shopper", () => {
   it("it can open the website", () => {
@@ -51,14 +52,17 @@ describe("weather shopper", () => {
 
     cy.findByText("Pay with Card").click().wait(1000); //iframe
     cy.frameLoaded(".stripe_checkout_app");
-    cy.iframe().find("[type='email']").type("gdsfjh@jdhjffdg.dfg");
-    cy.iframe().find("[placeholder='Card number']").type("4242 4242 4242 4242");
+    cy.iframe().find("[type='email']").type(faker.internet.email()); //type random email from faker
+    cy.iframe().find("[placeholder='Card number']").type("4242 4242 4242 4242"); //this is strip credit card test number
     cy.iframe().find("[placeholder='MM / YY']").type("0521");
-    cy.iframe().find("[placeholder='CVC']").type("123");
-    cy.iframe().find("[placeholder='ZIP Code']").type("45646");
+    cy.iframe()
+      .find("[placeholder='CVC']")
+      .type(faker.random.number({ min: 100, max: 999 })); //generate 3 random numbers from faker
+    cy.iframe().find("[placeholder='ZIP Code']").type(faker.address.zipCode()); // generate random zip code from jaker
     cy.iframe().find("button").click();
 
-    cy.wait(500);
+    cy.wait(1);
+    cy.url().should("include", Cypress.config().baseUrl + "confirmation"); //assert the correct URL
     cy.get("h2").should("include.text", "PAYMENT SUCCESS");
     cy.get("p.text-justify").should(
       "include.text",

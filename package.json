@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
   "devDependencies": {
     "@testing-library/cypress": "^6.0.0",
     "cypress": "^4.7.0",
