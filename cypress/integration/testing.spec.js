@@ -13,13 +13,11 @@ describe("weather shopper", () => {
     cy.getminimumPriceFor("Aloe", "aloe");
     cy.getMinPriceInTxt();
     cy.get("@minPriceWithCurrency").as("minPrice1");
-    cy.log("this is minPrice1 --> " + "@minPrice1");
 
     cy.getminimumPriceFor("Almond", "almond");
     cy.getMinPriceInTxt();
-    cy.getMinPriceInTxt();
     cy.get("@minPriceWithCurrency").as("minPrice2");
-    cy.log("@minPrice2");
+
     const selectItemPage = new SelectItemPage();
     const checkoutPage = new CheckoutPage();
 
@@ -71,7 +69,7 @@ describe("weather shopper", () => {
     cy.iframe().find("button").click();
 
     const confirmationPage = new ConfirmationPage();
-    cy.wait(1);
+    confirmationPage.getTitle().should("be.visible");
     cy.url().should("include", Cypress.config().baseUrl + "confirmation"); //assert the correct URL
     confirmationPage.getTitle().should("include.text", "PAYMENT SUCCESS");
     confirmationPage
