@@ -10,6 +10,7 @@
     "@testing-library/cypress": "^6.0.0",
     "cypress": "^4.11.0",
     "cypress-iframe": "^1.0.1",
+    "cypress-movie": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-cypress": "^2.11.1"
   },

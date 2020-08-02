@@ -10,9 +10,11 @@ var faker = require("faker");
 
 describe("weather shopper", () => {
   it("Checkout with the 2 cheapest items", () => {
+    cy.viewport(1024, 768);
     const homepage = new Homepage();
 
     cy.visit("/");
+    cy.wait(1000);
     homepage.getTemperatureDOM().then(($text) => {
       const temperature = parseInt($text.text()); //to get the temperature in int.
       console.log(temperature);
