@@ -11,8 +11,12 @@
     "cypress": "^4.11.0",
     "cypress-iframe": "^1.0.1",
     "cypress-movie": "^3.0.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
-    "eslint-plugin-cypress": "^2.11.1"
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-import": "^2.22.0",
+    "lint": "^0.7.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

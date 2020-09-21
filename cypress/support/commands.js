@@ -38,7 +38,9 @@ Cypress.Commands.add(
               //cy.log("minimum price  " + minPrice1);
             }
             //cy.log("minimum price 11 " + minPrice1);
-            cy.contains(minPrice1).next().as("MinPriceAddBtn");
+            cy.contains(minPrice1)
+              .next()
+              .as("MinPriceAddBtn");
             // cy.contains(minPrice1).next().click();
             cy.contains(minPrice1).as("Price"); //for assertion , future use
           });
@@ -51,7 +53,9 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add("getMinPriceInTxt", () => {
-  cy.get("@Price").invoke("text").as("minPriceWithCurrency");
+  cy.get("@Price")
+    .invoke("text")
+    .as("minPriceWithCurrency");
 });
 
 // -- This is a parent command --

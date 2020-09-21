@@ -68,20 +68,28 @@ describe("weather shopper", () => {
             cy.get("@total").should("equal", totalString);
           });
 
-        cy.findByText("Pay with Card").click().wait(1000); //iframe
+        cy.findByText("Pay with Card")
+          .click()
+          .wait(1000); //iframe
         cy.frameLoaded(".stripe_checkout_app");
-        cy.iframe().find("[type='email']").type(faker.internet.email()); //type random email from faker
+        cy.iframe()
+          .find("[type='email']")
+          .type(faker.internet.email()); //type random email from faker
         cy.iframe()
           .find("[placeholder='Card number']")
           .type("4242 4242 4242 4242"); //this is strip credit card test number
-        cy.iframe().find("[placeholder='MM / YY']").type("0521");
+        cy.iframe()
+          .find("[placeholder='MM / YY']")
+          .type("0521");
         cy.iframe()
           .find("[placeholder='CVC']")
           .type(faker.random.number({ min: 100, max: 999 })); //generate 3 random numbers from faker
         cy.iframe()
           .find("[placeholder='ZIP Code']")
           .type(faker.address.zipCode()); // generate random zip code from jaker
-        cy.iframe().find("button").click();
+        cy.iframe()
+          .find("button")
+          .click();
 
         const confirmationPage = new ConfirmationPage();
         confirmationPage.getTitle().should("be.visible");
@@ -143,20 +151,28 @@ describe("weather shopper", () => {
             cy.get("@total").should("equal", totalString);
           });
 
-        cy.findByText("Pay with Card").click().wait(1000); //iframe
+        cy.findByText("Pay with Card")
+          .click()
+          .wait(1000); //iframe
         cy.frameLoaded(".stripe_checkout_app");
-        cy.iframe().find("[type='email']").type(faker.internet.email()); //type random email from faker
+        cy.iframe()
+          .find("[type='email']")
+          .type(faker.internet.email()); //type random email from faker
         cy.iframe()
           .find("[placeholder='Card number']")
           .type("4242 4242 4242 4242"); //this is strip credit card test number
-        cy.iframe().find("[placeholder='MM / YY']").type("0521");
+        cy.iframe()
+          .find("[placeholder='MM / YY']")
+          .type("0521");
         cy.iframe()
           .find("[placeholder='CVC']")
           .type(faker.random.number({ min: 100, max: 999 })); //generate 3 random numbers from faker
         cy.iframe()
           .find("[placeholder='ZIP Code']")
           .type(faker.address.zipCode()); // generate random zip code from jaker
-        cy.iframe().find("button").click();
+        cy.iframe()
+          .find("button")
+          .click();
 
         const confirmationPage = new ConfirmationPage();
         confirmationPage.getTitle().should("be.visible");
