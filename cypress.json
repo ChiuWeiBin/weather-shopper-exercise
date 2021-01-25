@@ -1,5 +1,5 @@
 {
-  "watchForFileChanges": false,
-  "baseUrl": "http://weathershopper.pythonanywhere.com/",
-  "chromeWebSecurity": false
+	"watchForFileChanges": false,
+	"baseUrl": "https://weathershopper.pythonanywhere.com/",
+	"chromeWebSecurity": false
 }

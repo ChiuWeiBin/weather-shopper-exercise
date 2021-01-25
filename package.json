@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^6.0.0",
-    "cypress": "^4.11.0",
+    "cypress": "^6.3.0",
     "cypress-iframe": "^1.0.1",
     "cypress-movie": "^3.0.0",
     "eslint": "^7.9.0",
