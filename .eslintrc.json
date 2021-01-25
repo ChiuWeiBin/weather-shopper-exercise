@@ -1,15 +1,20 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "rules": {
-    }
+      "env": {
+            "es6": true,
+            "cypress/globals": true
+      },
+      "extends": [
+            "eslint:recommended",
+            "plugin:prettier/recommended",
+            "plugin:mocha/recommended"
+      ],
+      "plugins": ["mocha", "cypress"],
+      "globals": {
+            "describe": true,
+            "it": true
+      },
+      "rules": {
+            "mocha/no-mocha-arrows": "off",
+            "prettier/prettier": ["error", { "endOfLine": "auto" }]
+      }
 }
