@@ -10,53 +10,53 @@
 //
 //
 //import SelectItemPage from "./PageObject/SelectItemPage.spec";
-import "cypress-iframe";
-import SelectItemPage from "../integration/PageObject/SelectItemPage.spec";
+import 'cypress-iframe'
+import SelectItemPage from '../integration/PageObject/SelectItemPage'
 
-const selectItemPage = new SelectItemPage();
+const selectItemPage = new SelectItemPage()
 
 Cypress.Commands.add(
-  "getminimumPriceFor",
-  (includesWord1 = true, includesWord2 = true) => {
-    var minPrice1 = 99999;
+	'getminimumPriceFor',
+	(includesWord1 = true, includesWord2 = true) => {
+		var minPrice1 = 99999
 
-    cy.log("command start here************");
-    selectItemPage.getAllProductName().each((el, index, list) => {
-      const text = el.text();
-      if (text.includes(includesWord1) || text.includes(includesWord2)) {
-        selectItemPage
-          .getAllProductName()
-          .eq(index)
-          .next()
-          .then(($price) => {
-            const priceInText = $price.text();
-            const currentPrice = priceInText.replace(/\D/g, "");
-            //cy.log(currentPrice);
+		cy.log('command start here************')
+		selectItemPage.getAllProductName().each((el, index, list) => {
+			const text = el.text()
+			if (text.includes(includesWord1) || text.includes(includesWord2)) {
+				selectItemPage
+					.getAllProductName()
+					.eq(index)
+					.next()
+					.then($price => {
+						const priceInText = $price.text()
+						const currentPrice = priceInText.replace(/\D/g, '')
+						//cy.log(currentPrice);
 
-            if (currentPrice < minPrice1) {
-              minPrice1 = currentPrice;
-              //cy.log("minimum price  " + minPrice1);
-            }
-            //cy.log("minimum price 11 " + minPrice1);
-            cy.contains(minPrice1)
-              .next()
-              .as("MinPriceAddBtn");
-            // cy.contains(minPrice1).next().click();
-            cy.contains(minPrice1).as("Price"); //for assertion , future use
-          });
+						if (currentPrice < minPrice1) {
+							minPrice1 = currentPrice
+							//cy.log("minimum price  " + minPrice1);
+						}
+						//cy.log("minimum price 11 " + minPrice1);
+						cy.contains(minPrice1)
+							.next()
+							.as('MinPriceAddBtn')
+						// cy.contains(minPrice1).next().click();
+						cy.contains(minPrice1).as('Price') //for assertion , future use
+					})
 
-        //cy.log("minimum price 1111 " + minPrice1);
-      }
-    });
-    cy.get("@MinPriceAddBtn").click();
-  }
-);
+				//cy.log("minimum price 1111 " + minPrice1);
+			}
+		})
+		cy.get('@MinPriceAddBtn').click()
+	}
+)
 
-Cypress.Commands.add("getMinPriceInTxt", () => {
-  cy.get("@Price")
-    .invoke("text")
-    .as("minPriceWithCurrency");
-});
+Cypress.Commands.add('getMinPriceInTxt', () => {
+	cy.get('@Price')
+		.invoke('text')
+		.as('minPriceWithCurrency')
+})
 
 // -- This is a parent command --
 

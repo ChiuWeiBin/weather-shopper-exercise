@@ -2,9 +2,9 @@
 ///<reference types="cypress-iframe" />
 
 import '@testing-library/cypress/add-commands'
-import SelectItemPage from './PageObject/SelectItemPage.spec'
-import CheckoutPage from './PageObject/CheckoutPage.spec'
-import ConfirmationPage from './PageObject/ConfirmationPage.spec'
+import SelectItemPage from './PageObject/SelectItemPage'
+import CheckoutPage from './PageObject/CheckoutPage'
+import ConfirmationPage from './PageObject/ConfirmationPage'
 var faker = require('faker')
 
 describe('weather shopper', () => {

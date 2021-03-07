@@ -2,19 +2,28 @@
 ///<reference types="cypress-iframe" />
 
 import '@testing-library/cypress/add-commands'
-import SelectItemPage from './PageObject/SelectItemPage.spec'
-import CheckoutPage from './PageObject/CheckoutPage.spec'
-import ConfirmationPage from './PageObject/ConfirmationPage.spec'
-import Homepage from './PageObject/Homepage.spec'
+import SelectItemPage from './PageObject/SelectItemPage'
+import CheckoutPage from './PageObject/CheckoutPage'
+import ConfirmationPage from './PageObject/ConfirmationPage'
+import Homepage from './PageObject/Homepage'
 var faker = require('faker')
 
 describe('weather shopper', () => {
-	it('Checkout with the 2 cheapest items', () => {
-		cy.viewport(1024, 768)
+	const data = {
+		email: faker.internet.email(),
+		cvv: faker.random.number({ min: 100, max: 999 }),
+	}
+	it('Should checkout with the 2 cheapest items', () => {
+		//cy.viewport(1024, 768)
+		cy.intercept('GET', 'https://weathershopper.pythonanywhere.com/').as(
+			'homepage'
+		)
 		const homepage = new Homepage()
 
 		cy.visit('/')
-		cy.wait(1000)
+
+		cy.wait('@homepage')
+
 		homepage.getTemperatureDOM().then($text => {
 			const temperature = parseInt($text.text()) //to get the temperature in int.
 			console.log(temperature)
@@ -74,7 +83,7 @@ describe('weather shopper', () => {
 				cy.frameLoaded('.stripe_checkout_app')
 				cy.iframe()
 					.find("[type='email']")
-					.type(faker.internet.email()) //type random email from faker
+					.type(data.email) //type random email from faker
 				cy.iframe()
 					.find("[placeholder='Card number']")
 					.type('4242 4242 4242 4242') //this is strip credit card test number
@@ -83,7 +92,7 @@ describe('weather shopper', () => {
 					.type('0521')
 				cy.iframe()
 					.find("[placeholder='CVC']")
-					.type(faker.random.number({ min: 100, max: 999 })) //generate 3 random numbers from faker
+					.type(data.cvv) //generate 3 random numbers from faker
 				cy.iframe()
 					.find("[placeholder='ZIP Code']")
 					.type(faker.address.zipCode()) // generate random zip code from jaker

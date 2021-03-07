@@ -25,6 +25,23 @@ npm i
 
 Step 2 - Run test
 
-```
+```powershell
 npx cypress run
 ```
+
+Since I have added the below to the `package.json`
+
+```json
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run"
+	},
+```
+
+To run it, use
+
+```powershell
+npm run cy:open  	#instead of npx cypress open
+npm run cy:run		#instead of npx cypress run (run in headless mode)
+```
+

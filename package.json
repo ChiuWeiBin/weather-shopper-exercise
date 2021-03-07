@@ -1,30 +1,31 @@
 {
-  "name": "weather-shopper-exercise",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "faker": "^4.1.0"
-  },
-  "devDependencies": {
-    "@testing-library/cypress": "^6.0.0",
-    "cypress": "^6.3.0",
-    "cypress-iframe": "^1.0.1",
-    "cypress-movie": "^3.0.0",
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-chai-friendly": "^0.6.0",
-    "eslint-plugin-cypress": "^2.11.1",
-    "eslint-plugin-import": "^2.22.0",
-    "lint": "^0.7.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "ChiuWeiBin",
-  "license": "ISC"
+	"name": "weather-shopper-exercise",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {
+		"faker": "^4.1.0"
+	},
+	"devDependencies": {
+		"@testing-library/cypress": "^7.0.4",
+		"cypress": "^6.6.0",
+		"cypress-iframe": "^1.0.1",
+		"cypress-movie": "^3.0.5",
+		"eslint": "^7.21.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-chai-friendly": "^0.6.0",
+		"eslint-plugin-cypress": "^2.11.2",
+		"eslint-plugin-import": "^2.22.1",
+		"lint": "^0.7.0"
+	},
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run --spec 'cypress\\integration\\MainTest.spec.js'"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"author": "ChiuWeiBin",
+	"license": "ISC"
 }
